@@ -32,6 +32,14 @@ __plugin_configs__ = {
         "value": None,
         "help": "Saucenao的API_KEY，通过 https://saucenao.com/user.php?page=search-api 注册获取",
     },
+    "HTTP_PROXY": {
+        "value": None,
+        "help": "设置HTTP代理，如http://localhost:4780",
+    },
+    "HTTPS_PROXY": {
+        "value": None,
+        "help": "设置HTTPS代理，如http://localhost:4780",
+    }
 }
 
 

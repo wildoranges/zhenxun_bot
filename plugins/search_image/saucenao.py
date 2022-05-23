@@ -1,3 +1,4 @@
+from http.client import USE_PROXY
 from utils.http_utils import AsyncHttpx
 from configs.config import Config
 from configs.path_config import TEMP_PATH
@@ -23,7 +24,20 @@ async def get_saucenao_image(url: str) -> Union[str, List[str]]:
         "db": 999,
         "url": url,
     }
-    data = (await AsyncHttpx.post(API_URL_SAUCENAO, params=params)).json()
+    proxies = {}
+    is_proxy = False
+    http_proxy = Config.get_config("search_image", "HTTP_PROXY")
+    if http_proxy :
+        proxies["http://"] = http_proxy
+        is_proxy = True
+    https_proxy = Config.get_config("search_image", "HTTPS_PROXY")
+    if https_proxy :
+        proxies["https://"] = https_proxy
+        is_proxy = True
+    if not is_proxy :
+        proxies = None
+    print(proxies)
+    data = (await AsyncHttpx.post(API_URL_SAUCENAO, params=params, use_proxy=is_proxy, proxy=proxies)).json()
     if data["header"]["status"] != 0:
         return f"Saucenao识图失败..status：{data['header']['status']}"
     data = data["results"]
