@@ -18,6 +18,11 @@
 ## 声明
 此项目仅用于学习交流，请勿用于非法用途
 
+# Nonebot2
+<img style="height: 200px;width: 200px;" src="https://camo.githubusercontent.com/0ef71e86056da694c540790aa4a4e314396884d6c4fdb95362a7538b27a1b034/68747470733a2f2f76322e6e6f6e65626f742e6465762f6c6f676f2e706e67">
+
+非常 [ **[NICE](https://github.com/nonebot/nonebot2)** ] 的OneBot框架
+
 ## 未完成的文档
 
 # [传送门](https://hibikier.github.io/zhenxun_bot/)
@@ -109,7 +114,7 @@
 - [x] 获取b站视频封面
 - [x] 通过PID获取图片
 - [x] 功能统计可视化
-
+- [x] 词云
 - [x] 关于
 
 ### 已实现的管理员功能
@@ -231,12 +236,60 @@ python bot.py
 
 ## 使用Docker
 __Docker 最新版本由 [Sakuracio](https://github.com/Sakuracio) 提供__
-#### GitHub：[Sakuracio/zxenv](https://github.com/Sakuracio/zxenv)
+#### GitHub：[Sakuracio/zhenxun_bot_docker](https://github.com/Sakuracio/zhenxun_bot_docker)
 #### DockerHub：[hibikier/zhenxun_bot](https://hub.docker.com/r/hibikier/zhenxun_bot)
 
 
 
 ## 更新
+
+### 2022/5/30
+
+* 商店插件判断是否有requirements.txt文件
+
+### 2022/5/29 \[v0.1.5.8]
+
+* 提供了真寻适配仓库的插件 安装/卸载 操作
+* 暂时关闭了插件资源清空
+* 通过指令安装插件时会在插件目录下生成plugin_info.json记录当前插件信息
+
+### 2022/5/28
+
+* 修复私聊无法添加昵称
+* 修复原神玩家查询层岩巨渊地下矿区没开时报错
+* 修复 ```休息吧``` 无法阻断戳一戳
+* 当图库无图片时，戳一戳将略过发送图片
+* 新增搜图提供配置项```ALLOW_GROUP_R18```：允许在群聊中使用r18参数
+* 新增自动更新插件```UPDATE_REMIND```：新版本提醒，原配置项```AUTO_UPDATE_ZHENXUN```改为自动更新升级
+* black_word新增当群权限为-1时不再检测该群
+* 修复非超级用户绑定原神cookie会被black_word阻拦
+* 修复webui中plugins2setting修改时会改变plugins2setting.cmd为字符串
+* 修复微博热搜报错,发红包小bug [@pull/688](https://github.com/HibiKier/zhenxun_bot/pull/688)
+* 更多的中文提示
+
+### 2022/5/26
+
+* 修复\[滴滴滴]会被转义成&#91;滴滴滴&#93;导致无法触发的问题
+* 将一些错误以中文提示输出
+* 更新BT搜索源地址 [@pull/668](https://github.com/HibiKier/zhenxun_bot/pull/668)
+* 更新抽卡插件 [@pull/667](https://github.com/HibiKier/zhenxun_bot/pull/667)
+
+### 2022/5/25
+
+* 修复webui中CountLimit字段limit_type类型错误
+* 修改nickname插件：一处文案错误，添加敏感词 [@pull/624](https://github.com/HibiKier/zhenxun_bot/pull/624)
+* gamedraw的ba卡池搬运了过来并且进行了真寻的适配 [@pull/617](https://github.com/HibiKier/zhenxun_bot/pull/617)
+* feat: stream downloading and progress [@pull/607](https://github.com/HibiKier/zhenxun_bot/pull/607)
+* 修改翻译插件，添加缺失的冒号 [@pull/602](https://github.com/HibiKier/zhenxun_bot/pull/602)
+* 修复碧蓝航线/明日方舟up池解析出错的问题 [@pull/610](https://github.com/HibiKier/zhenxun_bot/pull/602)
+
+### 2022/5/24
+
+* fix: 修正了签到时日期时间的显示不补齐零的bug （符合日期时间表示法 ISO 8601）[@pull/600](https://github.com/HibiKier/zhenxun_bot/pull/600)
+* 更新"微博热搜"接口 [@pull/579](https://github.com/HibiKier/zhenxun_bot/pull/579)
+* refactor&fix(manager): modify argument [@pull/576](https://github.com/HibiKier/zhenxun_bot/pull/576)
+* 修复复读不能复读图片的问题 [@pull/573](https://github.com/HibiKier/zhenxun_bot/pull/573)
+* 修复抽卡插件：方舟抽卡的抽取和显示问题 [@pull/581](https://github.com/HibiKier/zhenxun_bot/pull/581)
 
 ### 2022/5/23 \[v0.1.5.6]
 
@@ -245,9 +298,9 @@ __Docker 最新版本由 [Sakuracio](https://github.com/Sakuracio) 提供__
 * 添加pixiv搜图多关键词支持;修复p站搜图数量参数问题 [@pull/441](https://github.com/HibiKier/zhenxun_bot/pull/441)
 * 修复开箱更新价格错误传参
 * 修复pix无法正确查询uid
-* 新增色图插件添加配置项ALLOW_GROUP_R18：允许群聊中使用色图r
-* 新增PIX插件添加配置项ALLOW_GROUP_SETU：允许非超级用户使用-s参数
-* 新增PIX插件添加配置项ALLOW_GROUP_R18：允许非超级用户使用-r参数
+* 新增色图插件添加配置项```ALLOW_GROUP_R18```：允许群聊中使用色图r
+* 新增PIX插件添加配置项```ALLOW_GROUP_SETU```：允许非超级用户使用-s参数
+* 新增PIX插件添加配置项```ALLOW_GROUP_R18```：允许非超级用户使用-r参数
 
 ### 2022/5/22 \[v0.1.5.4]
 
